@@ -1,6 +1,7 @@
 import words
 import ui
 import random
+import sys
 
 difficulty_levels = {
     "easy": {
