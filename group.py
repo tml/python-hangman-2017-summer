@@ -43,5 +43,17 @@ def main():
     # ui.render(object='gallows', parts=0)
     # ui.render(object='game_state', word=our_word, found=found)
     # ui.render(object='bank', letters=bank)
+
+def game_loop(word, found, bank, guess_count, parts):
+    while True:
+        if game_won(word, found):
+            print("Yay!")
+            sys.exit()
+        else:
+            ui.render(object='gallows', parts=0)
+            ui.render(object='game_state', word=our_word, found=found)
+            ui.render(object='bank', letters=bank)
+
+
 if __name__ == "__main__":
     main()
