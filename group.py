@@ -22,15 +22,13 @@ difficulty_levels = {
 }
 
 
-user = input("What is your name? ")
-difficulty = input("How hard of a game would you like? {} ".format(list(difficulty_levels.keys())))
 def main():
     parts = 0
     guess_count = 0
     found = []
     bank = []
 
-while difficulty not in difficulty_levels.keys():
+    user = input("What is your name? ")
     difficulty = input("How hard of a game would you like? {} ".format(list(difficulty_levels.keys())))
 
 our_word = words.choose(length=difficulty_levels[difficulty]['word length'])
