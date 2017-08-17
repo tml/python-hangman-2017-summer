@@ -43,3 +43,5 @@ def main():
     # ui.render(object='gallows', parts=0)
     # ui.render(object='game_state', word=our_word, found=found)
     # ui.render(object='bank', letters=bank)
+if __name__ == "__main__":
+    main()
