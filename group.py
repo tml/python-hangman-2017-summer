@@ -55,5 +55,12 @@ def game_loop(word, found, bank, guess_count, parts):
             ui.render(object='bank', letters=bank)
 
 
+def game_won(word, found):
+    for letter in word:
+        if letter not in found:
+            return False
+
+
+
 if __name__ == "__main__":
     main()
