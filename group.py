@@ -21,13 +21,14 @@ difficulty_levels = {
     }
 }
 
-parts = 0
-guess_count = 0
-found = []
-bank = []
 
 user = input("What is your name? ")
 difficulty = input("How hard of a game would you like? {} ".format(list(difficulty_levels.keys())))
+def main():
+    parts = 0
+    guess_count = 0
+    found = []
+    bank = []
 
 while difficulty not in difficulty_levels.keys():
     difficulty = input("How hard of a game would you like? {} ".format(list(difficulty_levels.keys())))
