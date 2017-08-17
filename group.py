@@ -31,6 +31,9 @@ def main():
     user = input("What is your name? ")
     difficulty = input("How hard of a game would you like? {} ".format(list(difficulty_levels.keys())))
 
+    while difficulty not in difficulty_levels.keys():
+        difficulty = input("How hard of a game would you like? {} ".format(list(difficulty_levels.keys())))
+
     # our_word = words.choose(length=difficulty_levels[difficulty]['word length'])
     # ui.render(object='gallows', parts=0)
     # ui.render(object='game_state', word=our_word, found=found)
