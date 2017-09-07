@@ -1,33 +1,34 @@
 @startuml
 digraph G {
     nodesep=.8;
-    #rankdir=LR;
+    rankdir=LR;
     node [shape=record,width=.1,height=.1];
     start [style=filled,color=green];
+    user_name [style=filled,color=green];
+    difficulty [style=filled,color=green];
     start -> user_name ;
     user_name -> difficulty;
     difficulty -> choose_word;
     choose_word -> render;
     user_pick_letter;
-    user_pick_letter -> letter_is_in_word;
-    user_pick_letter -> letter_not_in_word;
+    user_pick_letter -> letter_is_in_word [label="Y"];
+    user_pick_letter -> letter_not_in_word [label="N"];
 
     letter_is_in_word -> render;
     render -> user_has_guessed_word;
-    letter_is_in_word -> user_pick_letter;
 
     letter_not_in_word -> update_guessed_bank;
     update_guessed_bank -> draw_body_part;
-    draw_body_part  -> user_dead;
-    draw_body_part -> user_pick_letter;
+    draw_body_part  -> user_dead [label="Dead"];
+    draw_body_part -> user_pick_letter [label="Not dead"];
 
     user_dead -> play_again;
 
-    user_has_guessed_word -> play_again;
-    user_has_guessed_word -> user_pick_letter;
+    user_has_guessed_word -> play_again [label="Y"];
+    user_has_guessed_word -> user_pick_letter [label="N"];
 
-    play_again -> exit;
-    play_again -> difficulty;
+    play_again -> exit [label="N"];
+    play_again -> difficulty [label="Y"];
 
 }
 @enduml
