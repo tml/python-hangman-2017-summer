@@ -1,3 +1,7 @@
+"""
+This is our hangman game
+"""
+
 import words
 import ui
 
