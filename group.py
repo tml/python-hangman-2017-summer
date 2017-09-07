@@ -41,7 +41,8 @@ def main():
         difficulty = input("How hard of a game would you like? {} ".
                            format(list(difficulty_levels.keys())))
 
-    our_word = 'mississippi'
+    our_word = words.choose(difficulty_levels[difficulty]['word length'])
+    print("We picked the word {}".format(our_word))
 
     found = ['i', 's', 'p']
     bank = ['e', 'a', 't', 'o', 'h']
