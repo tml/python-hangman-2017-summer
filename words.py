@@ -14,3 +14,7 @@ def choose(difficulty):
                          stdout=subprocess.PIPE)
     result = obj.stdout.decode('utf-8').strip().split("\n")
     return random.choice(result)
+
+
+if __name__ == "__main__":
+    choose((3, 8))
