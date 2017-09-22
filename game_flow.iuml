@@ -6,11 +6,16 @@ digraph G {
     start [style=filled,color=green];
     user_name [style=filled,color=green];
     difficulty [style=filled,color=green];
+    choose_word [style=filled,color=green];
+    user_pick_letter [style=filled,color=green];
+    letter_is_in_word [style=filled,color=green];
+    letter_not_in_word [style=filled,color=green];
+    user_has_guessed_word  [style=filled,color=green];
+    update_guessed_bank  [style=filled,color=green];
     start -> user_name ;
     user_name -> difficulty;
     difficulty -> choose_word;
     choose_word -> render;
-    user_pick_letter;
     user_pick_letter -> letter_is_in_word [label="Y"];
     user_pick_letter -> letter_not_in_word [label="N"];
 
