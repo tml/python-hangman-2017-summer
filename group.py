@@ -60,7 +60,21 @@ def game_loop(user, word, guess_count, parts=None):
 
 
 def guess_letter(word):
-    pass
+    choice = input("Please enter a letter: ").lower()
+    if choice == "quit":
+        print("OK. Thanks for playing!")
+        sys.exit(0)
+    if validate_letter(choice) is False:
+        print("That's not a valid guess; please choose a single letter.")
+        return
+    print("You guessed {}".format(choice))
+    if choice in word:
+        FOUND_LETTERS.add(choice)
+        print("And congrats, {} is in {}".format(choice, word))
+    else:
+        WRONG_LETTERS.add(choice)
+        print("Failed! {} is not in {}.".format(choice, word))
+        print(WRONG_LETTERS)
 
 
 
