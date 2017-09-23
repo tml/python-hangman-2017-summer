@@ -26,13 +26,11 @@ difficulty_levels = {
     }
 }
 
+FOUND_LETTERS = set()
+WRONG_LETTERS = set()
+
 
 def main():
-    parts = 0
-    guess_count = 0
-    found = []
-    bank = []
-
     user = input("What is your name? ")
     difficulty = input("How hard of a game would you like? {} ".
                        format(list(difficulty_levels.keys())))
@@ -42,27 +40,29 @@ def main():
                            format(list(difficulty_levels.keys())))
 
     our_word = words.choose(difficulty_levels[difficulty]['word length'])
-    print("We picked the word {}".format(our_word))
-
-    found = ['i', 's', 'p']
-    bank = ['e', 'a', 't', 'o', 'h']
-
-    # our_word = words.choose(length=
-    # difficulty_levels[difficulty]['word length'])
-    # ui.render(object='gallows', parts=0)
-    # ui.render(object='game_state', word=our_word, found=found)
-    # ui.render(object='bank', letters=bank)
+    game_loop(user, our_word, difficulty_levels[difficulty]['guesses'])
 
 
-def game_loop(word, found, bank, guess_count, parts):
+def game_loop(user, word, guess_count, parts=None):
     while True:
-        if game_won(word, found):
-            print("Yay!")
+        if game_won(word, FOUND_LETTERS):
+            print("Yay, {}!".format(user))
             sys.exit()
-        else:
-            ui.render(object='gallows', parts=0)
-            ui.render(object='game_state', word=word, found=found)
-            ui.render(object='bank', letters=bank)
+
+        if len(WRONG_LETTERS) >= guess_count:
+            print("Oh, sad day, {}. You lost!".format(user))
+            sys.exit()
+
+        ui.render(object='gallows', parts=0)
+        ui.render(object='game_state', word=word, found=FOUND_LETTERS)
+        ui.render(object='bank', letters=WRONG_LETTERS)
+        guess_letter(word)
+
+
+def guess_letter(word):
+    pass
+
+
 
 
 def game_won(word, found):
