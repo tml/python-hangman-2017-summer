@@ -77,6 +77,8 @@ def guess_letter(word):
         print(WRONG_LETTERS)
 
 
+def validate_letter(letter):
+    return (len(letter) == 1) and (letter.isalpha())
 
 
 def game_won(word, found):
