@@ -82,9 +82,14 @@ def validate_letter(letter):
 
 
 def game_won(word, found):
-    for letter in word:
-        if letter not in found:
-            return False
+    """
+    :param word: the correct word which was chosen by words.choose
+    :param found: the set of letters which the user has found
+    :return: True or False
+    """
+    if (set(word).difference(set(found)) == set()):
+        return True
+    return False
 
 
 if __name__ == "__main__":
