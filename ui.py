@@ -1,3 +1,6 @@
+from terminaltables import SingleTable
+
+
 def render(object, **kw):
     if object == 'gallows':
         render_gallows(**kw)
@@ -18,14 +21,22 @@ def render_gallows(parts=0, **kw):
          ---------
     """)
 
+
 def render_bank(letters=[], **kw):
-    print("""
-_________________________
-|                       |
-|                       |
-|                       |
--------------------------
-        """)
+    sz = 6  # Size of table
+    if not any(letters):
+        let = [' ']
+    else:
+        let = sorted(list(letters))
+    table = SingleTable([let[i:i + sz] for i in range(0, len(let), sz)],
+                        'Incorrect Guesses')
+    table.inner_heading_row_border = False
+    table.inner_row_border = True
+    table.justify_columns = {idx: val for idx, val in
+                             enumerate(['center'] * sz)}
+    print()
+    print(table.table)
+
 
 def render_game_state(word="", found=[], **kw):
     for letter in word:
