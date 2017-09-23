@@ -9,6 +9,7 @@ def render(object, **kw):
     if object == 'game_state':
         render_game_state(**kw)
 
+
 def render_gallows(parts=0, **kw):
     print("""
         ______
