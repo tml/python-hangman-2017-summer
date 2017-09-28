@@ -8,7 +8,7 @@ import random
 
 def choose(difficulty):
     (min, max) = difficulty
-    cmd = """/usr/bin/grep -E '^.{{{},{}}}$'""" \
+    cmd = """/usr/bin/grep -E '^.{{{},{}}}$' """ \
           """/usr/share/dict/words""".format(min, max)
     obj = subprocess.run(cmd,
                          shell=True,
