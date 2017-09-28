@@ -35,8 +35,7 @@ def render_bank(letters=[], **kw):
     table.inner_row_border = True
     table.justify_columns = {idx: val for idx, val in
                              enumerate(['center'] * sz)}
-    print()
-    print(table.table)
+    print("\n{}".format(table.table))
 
 
 def render_game_state(word="", found=[], **kw):
