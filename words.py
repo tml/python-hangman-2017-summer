@@ -7,9 +7,11 @@ import random
 
 
 def choose(difficulty):
-    (min, max) = difficulty
-    cmd = """/usr/bin/grep -E '^.{{{},{}}}$' """ \
-          """/usr/share/dict/words""".format(min, max)
+    (min, max) = difficulty['word length']
+    file = 'data/easy.words'
+    if difficulty['commonality'] < 0.5:
+        file = 'data/hard.words'
+    cmd = """/usr/bin/grep -E '^.{{{},{}}}$' {}""".format(min, max, file)
     obj = subprocess.run(cmd,
                          shell=True,
                          stdout=subprocess.PIPE)
