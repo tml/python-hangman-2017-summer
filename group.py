@@ -10,18 +10,18 @@ import sys
 
 difficulty_levels = {
     "easy": {
-        'word length': (3, 8),
-        'commonality': 1.0,
-        'guesses': 15
-    },
-    "medium": {
         'word length': (8, 15),
         'commonality': 1.0,
+        'guesses': 7
+    },
+    "medium": {
+        'word length': (5, 12),
+        'commonality': 0.6,
         'guesses': 9
     },
     "hard": {
-        'word length': (15, 20),
-        'commonality': 1.0,
+        'word length': (3, 8),
+        'commonality': 0.3,
         'guesses': random.randint(4, 6)
     }
 }
