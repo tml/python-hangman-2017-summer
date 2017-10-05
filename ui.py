@@ -54,3 +54,7 @@ def render_game_state(word="", found=[], **kw):
             print(letter, end='')
         else:
             print(' _ ', end='')
+
+
+if __name__ == '__main__':
+    [render_gallows(x) for x in range(8)]
