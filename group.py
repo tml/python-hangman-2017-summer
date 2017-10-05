@@ -28,6 +28,7 @@ difficulty_levels = {
 
 FOUND_LETTERS = set()
 WRONG_LETTERS = set()
+DEBUG = False
 
 
 def main():
@@ -70,11 +71,13 @@ def guess_letter(word):
     print("You guessed {}".format(choice))
     if choice in word:
         FOUND_LETTERS.add(choice)
-        print("And congrats, {} is in {}".format(choice, word))
+        if DEBUG:
+            print("And congrats, {} is in {}".format(choice, word))
     else:
         WRONG_LETTERS.add(choice)
-        print("Failed! {} is not in {}.".format(choice, word))
-        print(WRONG_LETTERS)
+        if DEBUG:
+            print("Failed! {} is not in {}.".format(choice, word))
+            print(WRONG_LETTERS)
 
 
 def validate_letter(letter):
