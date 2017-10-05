@@ -44,7 +44,32 @@ def main():
     game_loop(user, our_word, difficulty_levels[difficulty]['guesses'])
 
 
+def init_game(difficulty=None):
+    global FOUND_LETTERS, WRONG_LETTERS
+    FOUND_LETTERS = set()
+    WRONG_LETTERS = set()
+    return words.choose(difficulty_levels[difficulty])
+
+
+def restart_game(word):
+    ui.render_gallows(parts=len(WRONG_LETTERS))
+    again = input("""The word was "{}". Would you like to play again?"""
+                  """ ['n' to exit]: """.format(word))
+    if again.lower().strip()[0] == 'n':
+        print(
+            """Oh…well…*sniff*…gee, that's awkward. """
+            """OK…no, no, I'll be fine…it's fine.\n"""
+            """I guess…I guess, thanks for playing? *cries softly*\n"""
+            """No, no – I'm fine. Have a great day. """
+            """Come back again some time when you're not so busy?\n"""
+        )
+        sys.exit(0)
+    init_game()
+
+
 def game_loop(user, word, guess_count, parts=None):
+    word = init_game(difficulty)
+    guess_count = difficulty_levels[difficulty]['guesses']
     while True:
         if game_won(word, FOUND_LETTERS):
             print("Yay, {}!".format(user))
