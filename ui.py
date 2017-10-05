@@ -12,7 +12,7 @@ def render(object, **kw):
 
 def render_gallows(parts=0, **kw):
     BODY = [
-        [' '] * 4, # 0 parts
+        [' '] * 4,  # 0 parts
         ['o'] + [' ']*3,  # 1 part: the head
         ['o', '|'] + [' '] * 2,
         ['o', '\|'] + [' '] * 2,
