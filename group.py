@@ -40,8 +40,7 @@ def main():
         difficulty = input("How hard of a game would you like? {} ".
                            format(list(difficulty_levels.keys())))
 
-    our_word = words.choose(difficulty_levels[difficulty]['word length'])
-    game_loop(user, our_word, difficulty_levels[difficulty]['guesses'])
+    game_loop(user, difficulty)
 
 
 def init_game(difficulty=None):
@@ -67,19 +66,19 @@ def restart_game(word):
     init_game()
 
 
-def game_loop(user, word, guess_count, parts=None):
+def game_loop(user, difficulty):
     word = init_game(difficulty)
     guess_count = difficulty_levels[difficulty]['guesses']
     while True:
         if game_won(word, FOUND_LETTERS):
             print("Yay, {}!".format(user))
-            sys.exit()
+            restart_game(word)
 
         if len(WRONG_LETTERS) >= guess_count:
             print("Oh, sad day, {}. You lost!".format(user))
-            sys.exit()
+            restart_game(word)
 
-        ui.render(object='gallows', parts=0)
+        ui.render(object='gallows', parts=len(WRONG_LETTERS))
         ui.render(object='game_state', word=word, found=FOUND_LETTERS)
         ui.render(object='bank', letters=WRONG_LETTERS)
         guess_letter(word)
